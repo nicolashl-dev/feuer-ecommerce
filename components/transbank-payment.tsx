@@ -60,3 +60,4 @@ export function TransbankPayment({ amount }: TransbankPaymentProps) {
     </Button>
   )
 }
+ 

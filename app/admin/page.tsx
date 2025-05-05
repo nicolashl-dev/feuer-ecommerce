@@ -21,12 +21,24 @@ export default function AdminPage() {
 
   useEffect(() => {
     const checkUser = async () => {
-      const { data } = await supabase.auth.getUser()
-      setUser(data.user)
+      const { data: { user } } = await supabase.auth.getUser()
+      setUser(user)
 
-      // En un entorno real, verificaríamos el rol del usuario en la base de datos
-      // Por ahora, simulamos que el usuario actual es admin
-      setIsAdmin(true)
+      if (user) {
+        // Verificar si el usuario es administrador en la tabla users_profiles
+        const { data: profile, error } = await supabase
+          .from('users_profiles')
+          .select('is_admin')
+          .eq('user_id', user.id)
+          .single()
+
+        if (error) {
+          console.error("Error al obtener el perfil del usuario:", error)
+          setIsAdmin(false)
+        } else {
+          setIsAdmin(profile?.is_admin || false) // Establecer isAdmin según el perfil
+        }
+      }
 
       setIsLoading(false)
     }

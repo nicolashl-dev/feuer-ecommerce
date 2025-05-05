@@ -1,13 +1,13 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { usePathname } from "next/navigation"
-import { ShoppingCart, User, Menu } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { useCart } from "@/components/cart-provider"
-import { useSupabase } from "@/components/supabase-provider"
-import { useState, useEffect } from "react"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { ShoppingCart, User, Menu } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { useCart } from "@/components/cart-provider";
+import { useSupabase } from "@/components/supabase-provider";
+import { useState, useEffect } from "react";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -15,43 +15,42 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Badge } from "@/components/ui/badge"
+} from "@/components/ui/dropdown-menu";
+import { Badge } from "@/components/ui/badge";
 
 export function SiteHeader() {
-  const pathname = usePathname()
-  const { totalItems } = useCart()
-  const { supabase } = useSupabase()
-  const [user, setUser] = useState<any>(null)
-  const [isLoading, setIsLoading] = useState(true)
+  const pathname = usePathname();
+  const { totalItems } = useCart();
+  const { supabase } = useSupabase();
+  const [user, setUser] = useState<any>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const getUser = async () => {
-      const { data } = await supabase.auth.getUser()
-      setUser(data.user)
-      setIsLoading(false)
-    }
+      const { data } = await supabase.auth.getUser();
+      setUser(data.user);
+      setIsLoading(false);
+    };
 
-    getUser()
-  }, [supabase])
+    getUser();
+  }, [supabase]);
 
   const handleSignOut = async () => {
-    await supabase.auth.signOut()
-    setUser(null)
-    window.location.href = "/"
-  }
+    await supabase.auth.signOut();
+    setUser(null);
+    window.location.href = "/";
+  };
 
   const mainNav = [
     { title: "Inicio", href: "/" },
     { title: "Productos", href: "/productos" },
     { title: "Nosotros", href: "/nosotros" },
     { title: "Contacto", href: "/contacto" },
-  ]
+  ];
 
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="relative container flex h-16 items-center justify-between">
-
         {/* Menú hamburguesa solo en móviles */}
         <div className="md:hidden">
           <Sheet>
@@ -68,7 +67,9 @@ export function SiteHeader() {
                     key={index}
                     href={item.href}
                     className={`text-sm font-medium ${
-                      pathname === item.href ? "text-primary" : "text-muted-foreground hover:text-foreground"
+                      pathname === item.href
+                        ? "text-primary"
+                        : "text-muted-foreground hover:text-foreground"
                     }`}
                   >
                     {item.title}
@@ -95,7 +96,9 @@ export function SiteHeader() {
               key={index}
               href={item.href}
               className={`text-sm font-medium ${
-                pathname === item.href ? "text-primary" : "text-muted-foreground hover:text-foreground"
+                pathname === item.href
+                  ? "text-primary"
+                  : "text-muted-foreground hover:text-foreground"
               }`}
             >
               {item.title}
@@ -105,8 +108,8 @@ export function SiteHeader() {
 
         {/* Carrito + Usuario alineados a la derecha */}
         <div className="flex items-center gap-2 ml-auto">
-          <Link href="/carrito">
-            <Button variant="ghost" size="icon" className="relative">
+          <Button asChild variant="ghost" size="icon" className="relative">
+            <Link href="/carrito">
               <ShoppingCart className="h-5 w-5" />
               {totalItems > 0 && (
                 <Badge className="absolute -top-2 -right-2 h-5 w-5 flex items-center justify-center p-0 text-xs">
@@ -114,8 +117,8 @@ export function SiteHeader() {
                 </Badge>
               )}
               <span className="sr-only">Carrito</span>
-            </Button>
-          </Link>
+            </Link>
+          </Button>
 
           {!isLoading &&
             (user ? (
@@ -141,7 +144,9 @@ export function SiteHeader() {
                     </DropdownMenuItem>
                   )}
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem onClick={handleSignOut}>Cerrar sesión</DropdownMenuItem>
+                  <DropdownMenuItem onClick={handleSignOut}>
+                    Cerrar sesión
+                  </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
             ) : (
@@ -155,5 +160,5 @@ export function SiteHeader() {
         </div>
       </div>
     </header>
-  )
+  );
 }
