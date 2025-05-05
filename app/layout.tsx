@@ -12,7 +12,7 @@ import NProgressClient from "@/components/nprogress-client"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Feuer calefactores",
+  title: "Feüer calefactores",
   description: "Tienda online de estufas a combustión lenta de alta calidad",
     generator: 'GeDiazDev & nshldev'
 }
@@ -26,17 +26,20 @@ export default function RootLayout({
 
   return (
     <html lang="es" className="dark" suppressHydrationWarning>
-    <body className={`${inter.className} min-h-screen bg-background antialiased`}>
-      <ThemeProvider>
-        <SupabaseProvider>
-          <CartProvider>
-          <NProgressClient />{/* 👈 aquí se integra sin romper metadata */}
-            {children}
-          </CartProvider>
-        </SupabaseProvider>
-      </ThemeProvider>
-      <Toaster />
-    </body>
-  </html>
+      <head>
+        <link rel="icon" href="/logo1.jpg" />
+      </head>
+      <body className={`${inter.className} min-h-screen bg-background antialiased`}>
+        <ThemeProvider>
+          <SupabaseProvider>
+            <CartProvider>
+              <NProgressClient /> {/* 👈 se conserva el loader */}
+              {children}
+            </CartProvider>
+          </SupabaseProvider>
+        </ThemeProvider>
+        <Toaster />
+      </body>
+    </html>
   )
-}
+}  
