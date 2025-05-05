@@ -17,6 +17,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Badge } from "@/components/ui/badge";
+import LinkWithLoader from "@/components/LinkWithLoader"
 
 export function SiteHeader() {
   const pathname = usePathname();
@@ -63,7 +64,7 @@ export function SiteHeader() {
             <SheetContent side="left">
               <nav className="flex flex-col gap-4 mt-8">
                 {mainNav.map((item, index) => (
-                  <Link
+                  <LinkWithLoader
                     key={index}
                     href={item.href}
                     className={`text-sm font-medium ${
@@ -73,7 +74,7 @@ export function SiteHeader() {
                     }`}
                   >
                     {item.title}
-                  </Link>
+                  </LinkWithLoader>
                 ))}
               </nav>
             </SheetContent>
@@ -81,18 +82,18 @@ export function SiteHeader() {
         </div>
 
         {/* Logo centrado */}
-        <Link href="/" className="absolute left-1/2 transform -translate-x-1/2">
+        <LinkWithLoader href="/" className="absolute left-1/2 transform -translate-x-1/2">
           <img
             src="https://res.cloudinary.com/dc31jopzd/image/upload/v1746411355/logo1_gnwc1t.png"
             alt="Feuer logo"
             className="h-14"
           />
-        </Link>
+        </LinkWithLoader>
 
         {/* Enlaces visibles en escritorio */}
         <nav className="hidden md:flex gap-6">
           {mainNav.map((item, index) => (
-            <Link
+            <LinkWithLoader
               key={index}
               href={item.href}
               className={`text-sm font-medium ${
@@ -102,14 +103,14 @@ export function SiteHeader() {
               }`}
             >
               {item.title}
-            </Link>
+            </LinkWithLoader>
           ))}
         </nav>
 
         {/* Carrito + Usuario alineados a la derecha */}
         <div className="flex items-center gap-2 ml-auto">
           <Button asChild variant="ghost" size="icon" className="relative">
-            <Link href="/carrito">
+            <LinkWithLoader href="/carrito">
               <ShoppingCart className="h-5 w-5" />
               {totalItems > 0 && (
                 <Badge className="absolute -top-2 -right-2 h-5 w-5 flex items-center justify-center p-0 text-xs">
@@ -117,7 +118,7 @@ export function SiteHeader() {
                 </Badge>
               )}
               <span className="sr-only">Carrito</span>
-            </Link>
+            </LinkWithLoader>
           </Button>
 
           {!isLoading &&
@@ -133,14 +134,14 @@ export function SiteHeader() {
                   <DropdownMenuLabel>Mi cuenta</DropdownMenuLabel>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem asChild>
-                    <Link href="/perfil">Perfil</Link>
+                    <LinkWithLoader href="/perfil">Perfil</LinkWithLoader>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
-                    <Link href="/pedidos">Mis pedidos</Link>
+                    <LinkWithLoader href="/pedidos">Mis pedidos</LinkWithLoader>
                   </DropdownMenuItem>
                   {user.app_metadata?.role === "admin" && (
                     <DropdownMenuItem asChild>
-                      <Link href="/admin">Administración</Link>
+                      <LinkWithLoader href="/admin">Administración</LinkWithLoader>
                     </DropdownMenuItem>
                   )}
                   <DropdownMenuSeparator />
@@ -151,10 +152,10 @@ export function SiteHeader() {
               </DropdownMenu>
             ) : (
               <Button variant="ghost" size="sm" asChild>
-                <Link href="/login">
+                <LinkWithLoader href="/login">
                   <User className="block md:hidden w-5 h-5" />
                   <span className="hidden md:inline">Iniciar sesión</span>
-                </Link>
+                </LinkWithLoader>
               </Button>
             ))}
         </div>

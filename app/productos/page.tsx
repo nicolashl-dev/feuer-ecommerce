@@ -4,6 +4,7 @@ import { createClient } from "@/lib/supabase/server"
 import Link from "next/link"
 import Image from "next/image"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import LinkWithLoader from "@/components/LinkWithLoader"
 
 async function getProducts() {
   const supabase = createClient()
@@ -95,7 +96,7 @@ export default async function ProductsPage() {
 
           <div className="product-grid mt-8">
             {displayProducts.map((product) => (
-              <Link
+              <LinkWithLoader
                 key={product.id}
                 href={`/productos/${product.id}`}
                 className="group overflow-hidden rounded-lg border bg-card transition-colors hover:border-primary"
@@ -114,7 +115,7 @@ export default async function ProductsPage() {
                   <p className="mt-1 text-sm text-muted-foreground">{product.short_description}</p>
                   <p className="mt-2 font-medium text-primary">${product.price.toLocaleString("es-CL")}</p>
                 </div>
-              </Link>
+              </LinkWithLoader>
             ))}
           </div>
         </div>

@@ -1,28 +1,18 @@
-"use client";
+"use client"
 
-import { useEffect, useRef } from "react";
-import { usePathname } from "next/navigation";
-import NProgress from "nprogress";
-import "@/styles/nprogress.css"; // Si tienes estilos personalizados
+import { useEffect } from "react"
+import { usePathname } from "next/navigation"
+import NProgress from "nprogress"
+import "nprogress/nprogress.css"
+import "@/styles/nprogress.css"
 
 export default function NProgressClient() {
-  const pathname = usePathname();
-  const timeout = useRef<NodeJS.Timeout | null>(null);
+  const pathname = usePathname()
 
   useEffect(() => {
-    NProgress.start();
+    // Detiene el loader cuando se completa la navegación
+    NProgress.done()
+  }, [pathname])
 
-    // Finge duración de navegación. Cancela si ya se está ejecutando otra.
-    if (timeout.current) clearTimeout(timeout.current);
-
-    timeout.current = setTimeout(() => {
-      NProgress.done();
-    }, 500); // duración simulada, puedes ajustar este tiempo
-
-    return () => {
-      if (timeout.current) clearTimeout(timeout.current);
-    };
-  }, [pathname]);
-
-  return null;
+  return null
 }

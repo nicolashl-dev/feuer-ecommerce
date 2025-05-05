@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button"
 import { Minus, Plus, Trash2 } from "lucide-react"
 import { Separator } from "@/components/ui/separator"
 import { useRouter } from "next/navigation"
+import LinkWithLoader from "@/components/LinkWithLoader"
 
 export default function CartPage() {
   const { items, removeItem, updateQuantity, totalItems, totalPrice } = useCart()
@@ -31,7 +32,7 @@ export default function CartPage() {
               <h2 className="mt-4 text-xl font-semibold">Tu carrito está vacío</h2>
               <p className="mt-2 text-muted-foreground">Parece que aún no has agregado productos a tu carrito.</p>
               <Button asChild className="mt-6">
-                <Link href="/productos">Ver productos</Link>
+                <LinkWithLoader href="/productos">Ver productos</LinkWithLoader> 
               </Button>
             </div>
           ) : (
@@ -58,9 +59,9 @@ export default function CartPage() {
                         <div className="flex flex-1 flex-col">
                           <div className="flex justify-between text-base font-medium">
                             <h3>
-                              <Link href={`/productos/${item.id}`} className="hover:underline">
+                              <LinkWithLoader href={`/productos/${item.id}`} className="hover:underline">
                                 {item.name}
-                              </Link>
+                              </LinkWithLoader>
                             </h3>
                             <p className="ml-4 text-primary">${item.price.toLocaleString("es-CL")}</p>
                           </div>
@@ -121,7 +122,7 @@ export default function CartPage() {
                         Proceder al pago
                       </Button>
                       <Button variant="outline" asChild className="w-full">
-                        <Link href="/productos">Seguir comprando</Link>
+                        <LinkWithLoader href="/productos">Seguir comprando</LinkWithLoader>
                       </Button>
                     </div>
                   </div>

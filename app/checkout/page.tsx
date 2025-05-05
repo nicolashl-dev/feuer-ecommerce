@@ -13,6 +13,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Checkbox } from "@/components/ui/checkbox"
 import { TransbankPayment } from "@/components/transbank-payment"
 import Link from "next/link"
+import LinkWithLoader from "@/components/LinkWithLoader"
 
 export default function CheckoutPage() {
   const { items, totalPrice } = useCart()
@@ -67,9 +68,9 @@ export default function CheckoutPage() {
                   <h2 className="text-lg font-medium">Información de cuenta</h2>
                   <p className="mt-2 text-sm text-muted-foreground">
                     ¿Ya tienes una cuenta?{" "}
-                    <Link href="/login?redirect=/checkout" className="text-primary hover:underline">
+                    <LinkWithLoader href="/login?redirect=/checkout" className="text-primary hover:underline">
                       Inicia sesión
-                    </Link>
+                    </LinkWithLoader>
                   </p>
 
                   <div className="mt-6 space-y-4">
@@ -211,9 +212,9 @@ export default function CheckoutPage() {
                         </label>
                         <p className="text-sm text-muted-foreground">
                           Al realizar tu compra, aceptas nuestros{" "}
-                          <Link href="/terminos" className="text-primary hover:underline">
+                          <LinkWithLoader href="/terminos" className="text-primary hover:underline">
                             términos y condiciones
-                          </Link>
+                          </LinkWithLoader>
                           .
                         </p>
                       </div>
