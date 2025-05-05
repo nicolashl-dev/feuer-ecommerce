@@ -11,7 +11,7 @@ import { SupabaseProvider } from "@/components/supabase-provider"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Feuer calefactores",
+  title: "Feüer calefactores",
   description: "Tienda online de estufas a combustión lenta de alta calidad",
     generator: 'v0.dev'
 }
@@ -25,6 +25,9 @@ export default function RootLayout({
 
   return (
     <html lang="es" className="dark" suppressHydrationWarning>
+<head>
+  <link rel="icon" href="/logo1.jpg" />
+</head>
       <body className={`${inter.className} min-h-screen bg-background antialiased`}>
         <ThemeProvider>
           <SupabaseProvider>

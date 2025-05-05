@@ -6,7 +6,13 @@ export function SiteFooter() {
       <div className="container py-8 md:py-12">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
           <div>
-            <h3 className="text-lg font-semibold text-primary">Estufas Premium</h3>
+          <Link href="/">
+              <img
+                src="https://res.cloudinary.com/dc31jopzd/image/upload/v1746411355/logo1_gnwc1t.png"
+                alt="Feüer logo"
+                className="h-14 mb-4"
+              />
+            </Link>
             <p className="mt-2 text-sm text-muted-foreground">
               Calidad y eficiencia en estufas a combustión lenta para tu hogar.
             </p>
@@ -59,15 +65,15 @@ export function SiteFooter() {
           <div>
             <h3 className="text-base font-medium">Contacto</h3>
             <ul className="mt-2 space-y-2 text-sm">
-              <li className="text-muted-foreground">contacto@estufaspremium.cl</li>
-              <li className="text-muted-foreground">+56 9 1234 5678</li>
-              <li className="text-muted-foreground">Santiago, Chile</li>
+              <li className="text-muted-foreground">contacto@feüer.cl</li>
+              <li className="text-muted-foreground">+56 9 74566665</li>
+              <li className="text-muted-foreground">Coronel, Chile</li>
             </ul>
           </div>
         </div>
         <div className="mt-8 border-t pt-6">
           <p className="text-center text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} Estufas Premium. Todos los derechos reservados.
+            &copy; {new Date().getFullYear()} Feüer. Todos los derechos reservados.
           </p>
         </div>
       </div>
