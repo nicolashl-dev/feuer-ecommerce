@@ -13,7 +13,7 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "Feüer calefactores",
   description: "Tienda online de estufas a combustión lenta de alta calidad",
-    generator: 'v0.dev'
+    generator: 'GeDiazDev & nshldev'
 }
 
 export default function RootLayout({
