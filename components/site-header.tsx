@@ -63,10 +63,12 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center justify-between">
+      <div className="relative container flex h-16 items-center justify-between">
+      <Link href="/" className="absolute left-1/2 transform -translate-x-1/2">
+  <img src="https://res.cloudinary.com/dc31jopzd/image/upload/v1746411355/logo1_gnwc1t.png" alt="Feuer logo" className="h-14" />
+</Link>
         <div className="flex gap-6 md:gap-10">
           <Link href="/" className="flex items-center space-x-2">
-            <span className="hidden font-bold sm:inline-block text-primary">Estufas Premium</span>
           </Link>
           <nav className="hidden gap-6 md:flex">
             {mainNav.map((item, index) => (

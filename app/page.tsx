@@ -30,7 +30,7 @@ export default async function Home() {
           <div className="hero-gradient absolute inset-0 z-10"></div>
           <div className="relative h-[70vh] w-full overflow-hidden">
             <Image
-              src="/placeholder.svg?height=1080&width=1920"
+              src="https://res.cloudinary.com/dc31jopzd/image/upload/v1746394934/477657951_937886255171485_5051038350513581750_n_ia1mkk.jpg"
               alt="Estufa a combustión lenta"
               fill
               className="object-cover"
@@ -38,7 +38,7 @@ export default async function Home() {
             />
           </div>
           <div className="container absolute inset-0 z-20 flex flex-col items-center justify-center text-center text-white">
-            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">Estufas a Combustión Lenta</h1>
+            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">Feuer</h1>
             <p className="mt-6 max-w-lg text-lg text-gray-200">
               Calefacción eficiente y duradera para tu hogar. Diseño moderno con la mejor tecnología.
             </p>

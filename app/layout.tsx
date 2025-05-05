@@ -11,7 +11,7 @@ import { SupabaseProvider } from "@/components/supabase-provider"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Estufas Premium - Combustión Lenta",
+  title: "Feuer calefactores",
   description: "Tienda online de estufas a combustión lenta de alta calidad",
     generator: 'v0.dev'
 }
