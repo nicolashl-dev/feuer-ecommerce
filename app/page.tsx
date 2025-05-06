@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 import { createClient } from "@/lib/supabase/server"
+import LinkWithLoader from "@/components/LinkWithLoader"
 
 async function getFeaturedProducts() {
   const supabase = createClient()
@@ -44,10 +45,10 @@ export default async function Home() {
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
               <Button asChild size="lg" className="bg-primary hover:bg-primary/90">
-                <Link href="/productos">Ver Productos</Link>
+                <LinkWithLoader href="/productos">Ver Productos</LinkWithLoader>
               </Button>
               <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
-                <Link href="/nosotros">Conoce Más</Link>
+                <LinkWithLoader href="/nosotros">Conoce Más</LinkWithLoader>
               </Button>
             </div>
           </div>
@@ -61,14 +62,14 @@ export default async function Home() {
               <p className="text-muted-foreground">Descubre nuestras estufas más populares</p>
             </div>
             <Button asChild>
-              <Link href="/productos">Ver todos</Link>
+              <LinkWithLoader href="/productos">Ver todos</LinkWithLoader>
             </Button>
           </div>
 
           <div className="product-grid mt-8">
             {featuredProducts.length > 0
               ? featuredProducts.map((product) => (
-                  <Link
+                  <LinkWithLoader
                     key={product.id}
                     href={`/productos/${product.id}`}
                     className="group overflow-hidden rounded-lg border bg-card transition-colors hover:border-primary"
@@ -87,7 +88,7 @@ export default async function Home() {
                       <p className="mt-1 text-sm text-muted-foreground">{product.short_description}</p>
                       <p className="mt-2 font-medium text-primary">${product.price.toLocaleString("es-CL")}</p>
                     </div>
-                  </Link>
+                  </LinkWithLoader>
                 ))
               : // Placeholder products if no data is available yet
                 Array.from({ length: 4 }).map((_, i) => (
@@ -233,7 +234,7 @@ export default async function Home() {
               durante los meses más fríos.
             </p>
             <Button asChild size="lg" className="mt-8 bg-white text-primary hover:bg-white/90">
-              <Link href="/productos">Ver Catálogo</Link>
+              <LinkWithLoader href="/productos">Ver Catálogo</LinkWithLoader>
             </Button>
           </div>
         </section>

@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { CheckCircle } from "lucide-react"
 import { useEffect, useState } from "react"
+import LinkWithLoader from "@/components/LinkWithLoader"
 
 export default function CheckoutSuccessPage() {
   const [orderNumber, setOrderNumber] = useState("")
@@ -50,10 +51,11 @@ export default function CheckoutSuccessPage() {
 
             <div className="mt-8 flex flex-col gap-4">
               <Button asChild>
-                <Link href="/pedidos">Ver mis pedidos</Link>
+                <LinkWithLoader
+                 href="/pedidos">Ver mis pedidos</LinkWithLoader>
               </Button>
               <Button variant="outline" asChild>
-                <Link href="/">Volver a la tienda</Link>
+                <LinkWithLoader href="/">Volver a la tienda</LinkWithLoader>
               </Button>
             </div>
           </div>
