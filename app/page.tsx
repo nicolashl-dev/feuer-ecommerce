@@ -38,7 +38,7 @@ export default async function Home() {
             />
           </div>
           <div className="container absolute inset-0 z-20 flex flex-col items-center justify-center text-center text-white">
-            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">Feuer</h1>
+            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">Feüer</h1>
             <p className="mt-6 max-w-lg text-lg text-gray-200">
               Calefacción eficiente y duradera para tu hogar. Diseño moderno con la mejor tecnología.
             </p>
@@ -198,7 +198,7 @@ export default async function Home() {
                   "La estufa ha transformado nuestra sala de estar. El calor es constante y el consumo de leña es mucho menor que con nuestra antigua estufa.",
               },
               {
-                name: "Juan Pérez",
+                name: "Nicolas Montecinos",
                 location: "Concepción",
                 quote:
                   "Excelente producto y servicio. La instalación fue rápida y profesional. La estufa calienta toda la casa con muy poca leña.",
