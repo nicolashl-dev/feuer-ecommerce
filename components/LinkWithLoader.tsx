@@ -1,46 +1,65 @@
 "use client"
 
-import Link from "next/link"
-import NProgress from "nprogress"
-import { usePathname, useRouter } from "next/navigation"
-import { MouseEvent, useEffect } from "react"
+import type React from "react"
 
-type Props = {
+import Link from "next/link"
+import { useRouter } from "next/navigation"
+import { useEffect, useState } from "react"
+import NProgress from "nprogress"
+
+// Inicializar NProgress
+NProgress.configure({ showSpinner: true })
+
+interface LinkWithLoaderProps {
   href: string
   children: React.ReactNode
   className?: string
+  prefetch?: boolean
 }
 
-export default function LinkWithLoader({ href, children, className }: Props) {
-  const pathname = usePathname()
+export default function LinkWithLoader({ href, children, className, prefetch }: LinkWithLoaderProps) {
   const router = useRouter()
+  const [isNavigating, setIsNavigating] = useState(false)
 
-  const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
-    if (href === pathname) {
-      e.preventDefault() // No hacer nada si estás en la misma ruta
-      return
+  useEffect(() => {
+    const handleRouteChangeStart = () => {
+      setIsNavigating(true)
+      NProgress.start()
     }
 
-    NProgress.start()
-  }
-
-  // Este hook asegura que se detenga el loader cuando haya una navegación
-  useEffect(() => {
-    const handleComplete = () => {
+    const handleRouteChangeComplete = () => {
+      setIsNavigating(false)
       NProgress.done()
     }
 
-    window.addEventListener("pageshow", handleComplete)
-    window.addEventListener("load", handleComplete)
+    const handleRouteChangeError = () => {
+      setIsNavigating(false)
+      NProgress.done()
+    }
 
+    // Añadir event listeners
+    window.addEventListener("beforeunload", handleRouteChangeStart)
+    document.addEventListener("next:router:change:start", handleRouteChangeStart)
+    document.addEventListener("next:router:change:complete", handleRouteChangeComplete)
+    document.addEventListener("next:router:change:error", handleRouteChangeError)
+
+    // Limpiar event listeners
     return () => {
-      window.removeEventListener("pageshow", handleComplete)
-      window.removeEventListener("load", handleComplete)
+      window.removeEventListener("beforeunload", handleRouteChangeStart)
+      document.removeEventListener("next:router:change:start", handleRouteChangeStart)
+      document.removeEventListener("next:router:change:complete", handleRouteChangeComplete)
+      document.removeEventListener("next:router:change:error", handleRouteChangeError)
     }
   }, [])
 
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault()
+    NProgress.start()
+    router.push(href)
+  }
+
   return (
-    <Link href={href} onClick={handleClick} className={className}>
+    <Link href={href} className={className} prefetch={prefetch} onClick={handleClick} aria-disabled={isNavigating}>
       {children}
     </Link>
   )
