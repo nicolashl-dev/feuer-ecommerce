@@ -10,10 +10,20 @@ export const createClient = () => {
         return cookieStore.get(name)?.value
       },
       set(name, value, options) {
-        cookieStore.set({ name, value, ...options })
+        try {
+          cookieStore.set({ name, value, ...options })
+        } catch (error) {
+          // Ignorar errores de cookies en contextos donde no se pueden modificar
+          console.warn("No se pudo establecer la cookie:", name)
+        }
       },
       remove(name, options) {
-        cookieStore.set({ name, value: "", ...options })
+        try {
+          cookieStore.set({ name, value: "", ...options })
+        } catch (error) {
+          // Ignorar errores de cookies en contextos donde no se pueden modificar
+          console.warn("No se pudo eliminar la cookie:", name)
+        }
       },
     },
   })
