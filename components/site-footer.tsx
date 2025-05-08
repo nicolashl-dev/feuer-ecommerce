@@ -17,6 +17,27 @@ export function SiteFooter() {
             <p className="mt-2 text-sm text-muted-foreground">
               Calidad y eficiencia en estufas a combustión lenta para tu hogar.
             </p>
+            <a href="https://www.facebook.com/profile.php?id=100068503562178" target="_blank" rel="noopener noreferrer">
+              <img
+                src="https://img.icons8.com/?size=100&id=118497&format=png&color=000000"
+                alt="Facebook"
+                className="h-8 mt-4 mr-2 inline-block"
+              />
+            </a>
+            <a href="https://www.instagram.com/feuercalefactores/" target="_blank" rel="noopener noreferrer">
+              <img
+                src="https://img.icons8.com/?size=100&id=Xy10Jcu1L2Su&format=png&color=000000"
+                alt="Instagram"
+                className="h-8 mt-4 mr-2 inline-block"
+              />
+            </a>
+            <a href="https://wa.me/974566665" target="_blank" rel="noopener noreferrer">
+              <img
+                src="https://img.icons8.com/?size=100&id=16713&format=png&color=000000"
+                alt="Whatsapp"
+                className="h-8 mt-4 mr-2 inline-block"
+              />
+            </a>         
           </div>
           <div>
             <h3 className="text-base font-medium">Navegación</h3>

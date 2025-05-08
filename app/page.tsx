@@ -59,7 +59,7 @@ export default async function Home() {
           <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
             <div>
               <h2 className="text-3xl font-bold tracking-tight">Productos Destacados</h2>
-              <p className="text-muted-foreground">Descubre nuestras estufas más populares</p>
+              <p className="text-muted-foreground">Descubre nuestros productos destacados.</p>
             </div>
             <Button asChild>
               <LinkWithLoader href="/productos">Ver todos</LinkWithLoader>

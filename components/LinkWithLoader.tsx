@@ -45,3 +45,4 @@ export default function LinkWithLoader({ href, children, className }: Props) {
     </Link>
   )
 }
+
