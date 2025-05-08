@@ -31,7 +31,7 @@ export function SiteFooter() {
                 className="h-8 mt-4 mr-2 inline-block"
               />
             </a>
-            <a href="https://wa.me/974566665" target="_blank" rel="noopener noreferrer">
+            <a href="https://api.whatsapp.com/send/?phone=56974566665&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer">
               <img
                 src="https://img.icons8.com/?size=100&id=16713&format=png&color=000000"
                 alt="Whatsapp"
